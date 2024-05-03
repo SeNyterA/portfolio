@@ -13,7 +13,8 @@
     "@tabler/icons-react": "^3.3.0",
     "framer-motion": "^11.1.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.0"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",

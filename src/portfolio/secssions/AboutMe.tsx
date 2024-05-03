@@ -37,7 +37,16 @@ export default function AboutMe() {
   });
 
   const projectsX = useTransform(projectsYProgress, [0.25, 1], ["0%", "-266%"]);
-  const workspaceX = useTransform(workspaceYProgress, [0.25, 1], ["0%", "-84%"]);
+  const workspaceX = useTransform(
+    workspaceYProgress,
+    [0.25, 1],
+    ["0%", "-84%"]
+  );
+  const workspaceImgsX = useTransform(
+    workspaceYProgress,
+    [0.25, 1],
+    ["0%", "-600%"]
+  );
 
   useLayoutEffect(() => {
     const scrollTrigger = viewPortRef?.current?.addEventListener(
@@ -96,8 +105,15 @@ export default function AboutMe() {
       >
         <div className="flex h-full items-center gap-10 p-10">
           <div className="relative flex-1">
-            <motion.p className="text-5xl font-bold">N.D.Khang</motion.p>
-            <div className="animated-text relative">
+            <motion.p
+              className="text-4xl font-black"
+              style={{
+                fontFamily: '"Neon Spark", sans-serif',
+              }}
+            >
+              Nguyen Duc Khang
+            </motion.p>
+            <div className="animated-text relative text-3xl">
               I'm a <span></span>
             </div>
             <p className="cursor-text">
@@ -741,23 +757,37 @@ export default function AboutMe() {
               </motion.button>
             </motion.div>
 
-            <div className="aspect-square h-full space-x-[2%] overflow-hidden rounded-2xl object-cover blur-[2px]">
-              <img
-                src="/workspace.png"
-                className="h-full overflow-hidden rounded-2xl object-cover"
-              />
-              <img
-                src="/workspace.png"
-                className="h-full overflow-hidden rounded-2xl object-cover"
-              />
-              <img
-                src="/workspace.png"
-                className="h-full overflow-hidden rounded-2xl object-cover"
-              />
-              <img
-                src="/workspace.png"
-                className="h-full overflow-hidden rounded-2xl object-cover"
-              />
+            {/* <div className="aspect-square h-full overflow-hidden rounded-2xl flex-col">
+              <motion.div
+                style={{
+                  x: workspaceImgsX,
+                }}
+                className="flex h-full max-h-full gap-4"
+              >
+                <img
+                  src="/workspace.png"
+                  className="h-full min-w-fit rounded-2xl max-h-full object-contain"
+                />
+                <img
+                  src="/workspace.png"
+                  className="h-full min-w-fit rounded-2xl max-h-full object-contain"
+                />
+                <img
+                  src="/workspace.png"
+                  className="h-full min-w-fit rounded-2xl max-h-full object-contain"
+                />
+                <img
+                  src="/workspace.png"
+                  className="h-full min-w-fit rounded-2xl max-h-full object-contain"
+                />
+              </motion.div>
+            </div> */}
+
+            <div className="aspect-square space-x-3 space-y-3 h-full overflow-hidden rounded-2xl gap-2 flex-col gird grid-cols-2">
+              <img src="/workspace.png" className="object-contain" />
+              <img src="/workspace.png" className="object-contain" />
+              <img src="/workspace.png" className="object-contain" />
+              <img src="/workspace.png" className="object-contain" />
             </div>
           </div>
         </div>
