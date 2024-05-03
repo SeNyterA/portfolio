@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+@font-face {
+  font-family: "Cayano Regular";
+  src: url("/cayano-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Petit Cochon";
+  src: url("/Petit Cochon.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'Neon Spark';
+  src: url('neonspark.otf') format('opentype');
+}
+
 blockquote,
 dl,
 dd,
@@ -19,6 +36,10 @@ pre {
 }
 
 body {
-  font-family: "Nunito", sans-serif;
-  font-size: 14px;
+  font-family: "Lato", sans-serif;
+  // font-family: 'Neon Spark', sans-serif;
+  // font-family: "Nunito", sans-serif;
+  // font-family: 'Cayano Regular', sans-serif;
+  // font-family: 'Petit Cochon', sans-serif;
+  font-optical-sizing: auto;
 }

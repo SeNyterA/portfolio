@@ -47,18 +47,13 @@
   .intro-text-overlay {
     @apply absolute bottom-0 left-0 top-0 overflow-hidden bg-gradient-to-r from-blue-900 via-yellow-900 to-indigo-900 bg-clip-text text-transparent transition-all ease-in-out;
     animation: cursorIntro 0.5s linear infinite;
-    transition:
-      width 5s,
-      opacity 0.5s,
-      scale 0.5s;
+    transition: width 5s, opacity 0.5s, scale 0.5s;
     border-right: 5px solid #ff7f50;
   }
   &:hover .intro-text-overlay {
     scale: 1.05;
     filter: drop-shadow(0 0 10px #6366f1);
-    animation:
-      glitchIntro 5s linear infinite,
-      cursorIntro 1s linear infinite;
+    animation: glitchIntro 5s linear infinite, cursorIntro 1s linear infinite;
   }
 }
 
@@ -67,7 +62,7 @@
   &::before {
     transition: width 2s;
     z-index: -1;
-    content: '';
+    content: "";
     position: absolute;
     top: -100%;
     right: -100%;
@@ -81,7 +76,7 @@
 .bgConicContainer {
   &::before {
     border-radius: 20px !important;
-    content: '';
+    content: "";
     position: absolute;
     top: -170%;
     right: -170%;
@@ -99,21 +94,19 @@
   span {
     position: relative;
     &::before {
-      content: 'Youtuber';
+      content: "Youtuber";
       color: #ff7f50;
       animation: words 20s infinite;
     }
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       width: calc(100% + 8px);
       height: 100%;
       background-color: #2f3542;
       border-left: 2px solid #ff7f50;
       right: -8px;
-      animation:
-        cursor 0.8s infinite,
-        typing 20s steps(14) infinite;
+      animation: cursor 0.8s infinite, typing 20s steps(14) infinite;
     }
   }
 }
@@ -127,23 +120,23 @@
 @keyframes words {
   0%,
   20% {
-    content: 'Youtuber';
+    content: "Youtuber";
   }
   21%,
   40% {
-    content: 'Blogger';
+    content: "Blogger";
   }
   41%,
   60% {
-    content: 'Developer';
+    content: "Developer";
   }
   61%,
   80% {
-    content: 'Designer';
+    content: "Designer";
   }
   81%,
   100% {
-    content: 'Gamer';
+    content: "Gamer";
   }
 }
 
@@ -283,7 +276,7 @@
     margin-bottom: 16px;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 30px;
       left: 50%;
@@ -357,7 +350,7 @@
 .projects {
   &::before {
     @apply -z-20 bg-cover bg-center;
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     // background-image: url('/app.png');
@@ -372,16 +365,10 @@
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
-.icons-inner-1 {
-  display: flex;
-  animation: scrolltech 40s linear infinite;
-}
-
-.icons-inner-2 {
-  display: flex;
-  animation: scrolltech 40s linear infinite;
+.icons-inner {
+  animation: scrolltech 30s linear infinite;
 }
