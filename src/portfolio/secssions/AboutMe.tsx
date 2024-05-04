@@ -117,8 +117,8 @@ export default function AboutMe() {
           clearTimeout(timeoutRef.current)
         }}
       >
-        <div className='flex h-full items-center gap-10 p-10'>
-          <div className='relative flex-1'>
+        <div className='flex h-full items-center gap-10'>
+          <div className='relative p-10 pr-0 flex-1 overflow-x-hidden'>
             <motion.p
               className='text-4xl font-black'
               style={{
@@ -160,216 +160,216 @@ export default function AboutMe() {
               a fast-paced and innovative team.
             </p>
 
-            <div className='absolute inset-x-0 mt-2 overflow-x-scroll'>
-              <div className='icons-inner flex !min-w-fit gap-2'>
-                <div className='icons-inner flex w-fit !min-w-fit gap-2'>
-                  <img
-                    src='/techs/react.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/nextjs.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/nestjs.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/firebase.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/redis.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/redux.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/react-query.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/tailwind.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/socket-io.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/mysql.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/mongo.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/typeorm.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/prisma.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/graphql.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/apollographql.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/vite.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/mantine.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/antd.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/material.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/docker.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/ec2.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/ngnix.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                </div>
-                <div className='icons-inner flex w-fit !min-w-fit gap-2'>
-                  <img
-                    src='/techs/react.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/nextjs.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/nestjs.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/firebase.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/redis.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/redux.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/react-query.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/tailwind.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/socket-io.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/mysql.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/mongo.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/typeorm.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/prisma.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/graphql.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/apollographql.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/vite.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/mantine.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/antd.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/material.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/docker.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/ec2.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                  <img
-                    src='/techs/ngnix.png'
-                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
-                  />
-                </div>
+            <div className='flex max-w-full gap-2 overflow-x-hidden'>
+              <div className='icons-inner flex shrink-0 gap-2'>
+                <img
+                  src='/techs/react.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/nextjs.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/nestjs.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/firebase.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/redis.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/redux.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/react-query.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/tailwind.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/socket-io.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/mysql.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/mongo.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/typeorm.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/prisma.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/graphql.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/apollographql.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/vite.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/mantine.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/antd.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/material.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/docker.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/ec2.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/ngnix.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
               </div>
-
-              <motion.button
-                className='mt-2 flex h-9 cursor-pointer items-center justify-center gap-2 rounded-lg border-none bg-slate-700 px-4 text-white outline-none hover:bg-slate-950'
-                initial={{ opacity: 0, translateX: -1000 }}
-                animate={{ opacity: 1, translateX: 0 }}
-                whileHover={{
-                  filter: 'drop-shadow(0 0 4px #000000aa)',
-                  scale: 1.05
-                }}
-                onClick={() => {
-                  window.open('/NguyenDucKhang.pdf')
-                }}
-              >
-                <IconDownload size={16} />
-                CV
-              </motion.button>
+              <div className='icons-inner flex shrink-0 gap-2'>
+                <img
+                  src='/techs/react.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/nextjs.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/nestjs.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/firebase.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/redis.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/redux.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/react-query.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/tailwind.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/socket-io.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/mysql.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/mongo.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/typeorm.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/prisma.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/graphql.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/apollographql.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/vite.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/mantine.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/antd.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/material.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/docker.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/ec2.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+                <img
+                  src='/techs/ngnix.png'
+                  className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                />
+              </div>
             </div>
+
+            <motion.button
+              className='mt-2 flex h-9 cursor-pointer items-center justify-center gap-2 rounded-lg border-none bg-slate-700 px-4 text-white outline-none hover:bg-slate-950'
+              initial={{ opacity: 0, translateX: -1000 }}
+              animate={{ opacity: 1, translateX: 0 }}
+              whileHover={{
+                filter: 'drop-shadow(0 0 4px #000000aa)',
+                scale: 1.05
+              }}
+              onClick={() => {
+                window.open('/NguyenDucKhang.pdf')
+              }}
+            >
+              <IconDownload size={16} />
+              CV
+            </motion.button>
           </div>
 
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            src='/ft.mp4'
-            className='aspect-square h-full overflow-hidden rounded-2xl object-cover'
-          />
+          <div className='p-10 pl-0 h-full'>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              src='/ft.mp4'
+              className='aspect-square h-full overflow-hidden rounded-2xl object-cover'
+            />
+          </div>
         </div>
 
         <div className='flex h-full items-center gap-10 p-10'>
