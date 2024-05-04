@@ -1,4 +1,8 @@
-import { IconDownload } from "@tabler/icons-react";
+import {
+  IconArrowRight,
+  IconBrandGithub,
+  IconDownload,
+} from "@tabler/icons-react";
 import {
   motion,
   useMotionValueEvent,
@@ -6,6 +10,25 @@ import {
   useTransform,
 } from "framer-motion";
 import { useLayoutEffect, useRef, useState } from "react";
+
+const workspaceApp = [
+  {
+    slogan: "Pure Simplicity",
+    description: "User-friendly for productivity.",
+  },
+  {
+    slogan: "Peak Performance",
+    description: "Handle tasks with speed.",
+  },
+  {
+    slogan: "Solid Stability",
+    description: "Consistent, uninterrupted work.",
+  },
+  {
+    slogan: "Easy Custom",
+    description: "Tailor your workspace with ease.",
+  },
+];
 
 export default function AboutMe() {
   const projectsRef = useRef<HTMLDivElement>(null);
@@ -114,7 +137,7 @@ export default function AboutMe() {
               Nguyen Duc Khang
             </motion.p>
             <div className="animated-text relative text-3xl">
-              I'm a <span></span>
+              I'm a <span className="text-blue-600"></span>
             </div>
             <p className="cursor-text">
               I'm a{" "}
@@ -147,8 +170,8 @@ export default function AboutMe() {
             </p>
 
             <div className="absolute inset-x-0 mt-2 overflow-x-scroll">
-              <div className="flex min-w-fit gap-2 icons-inner">
-                <div className="flex gap-2 icons-inner min-w-fit">
+              <div className="flex !min-w-fit gap-2 icons-inner">
+                <div className="flex gap-2 icons-inner w-fit !min-w-fit">
                   <img
                     src="/techs/react.png"
                     className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
@@ -238,7 +261,7 @@ export default function AboutMe() {
                     className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
                   />
                 </div>
-                <div className="flex gap-2 icons-inner min-w-fit">
+                <div className="flex gap-2 icons-inner w-fit !min-w-fit">
                   <img
                     src="/techs/react.png"
                     className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
@@ -499,8 +522,8 @@ export default function AboutMe() {
             <motion.div className="z-50 flex flex-1 flex-col justify-center overflow-x-hidden rounded-xl">
               <p className="text-2xl font-semibold">TGL Solutions</p>
               <p>
-                I have been working as a Full-Stack Developer intern since May
-                2022, and I transitioned to full-time in August 2022. I work for
+                I have been working as a Full-Stack Developer intern since March
+                2022, and I transitioned to full-time in April 2022. I work for
                 a company that specializes in outsourcing services for the
                 Japanese market. My primary responsibilities include
                 participating in product development projects and outsourcing
@@ -528,7 +551,10 @@ export default function AboutMe() {
                     minimizes costs while enhancing convenience and user
                     experience.
                   </p>
-                  <p>Role: Frontend developer</p>
+                  <p>
+                    Role:{" "}
+                    <span className="text-blue-600">Frontend developer</span>
+                  </p>
                   <p>
                     My contributions: I integrated Firebase authentication with
                     webviews and created a visually appealing UI using Ant
@@ -549,7 +575,12 @@ export default function AboutMe() {
                     overhauling the entire system to make it more efficient and
                     functional.
                   </p>
-                  <p>Role: Frontend, Backend developer</p>
+                  <p>
+                    Role:{" "}
+                    <span className="text-blue-600">
+                      Frontend, Backend developer
+                    </span>
+                  </p>
                   <p>
                     My contributions: I built easily usable and reusable
                     components, upgraded and maintained them. I organized
@@ -569,7 +600,12 @@ export default function AboutMe() {
                     of this project is to provide a convenient and efficient way
                     to assess the condition and quality of these structures.
                   </p>
-                  <p>Role: Frontend, Backend, Mobile developer</p>
+                  <p>
+                    Role:{" "}
+                    <span className="text-blue-600">
+                      Frontend, Backend, Mobile developer
+                    </span>
+                  </p>
                   <p>
                     My contributions: I contributed to a project involving
                     surveys and evaluations of construction works and
@@ -597,7 +633,9 @@ export default function AboutMe() {
                     aims to increase operational efficiency and streamline the
                     management of internal activities.
                   </p>
-                  <p>Role: Frontend</p>
+                  <p>
+                    Role: <span className="text-blue-600">Frontend</span>
+                  </p>
                   <p>
                     I have made significant contributions by customizing and
                     improving the open-source code of Mattermost. My work
@@ -615,147 +653,203 @@ export default function AboutMe() {
 
         <div className="projects relative h-[300%]" ref={workspaceRef}>
           <div className="sticky top-0 flex h-1/3 gap-10 p-10">
-            <motion.div className="z-50 flex flex-1 flex-col justify-center rounded-xl overflow-x-hidden">
+            <motion.div className="z-50 flex flex-1 flex-col justify-center rounded-xl">
               <p className="text-2xl font-semibold">Live workspace</p>
               <p>
                 The development of a comprehensive{" "}
-                <span>real-time workspace system</span>
-                focused on integrating chat functionality, notifications, and
-                task management features. Crafted using a cutting-edge tech
-                stack including <span>NestJS</span> and <span>ReactJS</span>.
-                With a strong emphasis on speed and efficiency, the system
-                ensured optimal performance and responsiveness, enabling swift
-                and seamless interactions within the workspace environment.
+                <span className="text-blue-600">
+                  real-time workspace system
+                </span>
+                focused on integrating{" "}
+                <span className="text-blue-600">chat functionality</span>,{" "}
+                <span className="text-blue-600">notifications</span>, and
+                <span className="text-blue-600">task management features</span>.
+                Crafted using a cutting-edge tech stack including{" "}
+                <span className="text-blue-600">NestJS</span> and{" "}
+                <span className="text-blue-600">ReactJS</span>. With a strong
+                emphasis on speed and efficiency, the system ensured optimal
+                performance and responsiveness, enabling swift and seamless
+                interactions within the workspace environment.
               </p>
-              <motion.div
-                className="mt-4 flex gap-[2%] text-sm 2xl:text-base"
-                style={{
-                  x: workspaceX,
-                }}
-              >
-                <div className="min-w-[60%] items-start justify-center gap-4 rounded-xl border border-dashed border-blue-400 p-4">
-                  <p className="text-xl">Frontend</p>
-                  <div>
-                    For effective state management, Redux was employed,
-                    guaranteeing smooth and predictable handling of the
-                    application state. Additionally, React Query, fully
-                    supported with TypeScript, was integrated to enhance data
-                    fetching and caching. A modern, responsive user interface
-                    prioritizing usability and aesthetics was developed using
-                    MantineUI and Tailwind CSS.
+              <div className="overflow-x-hidden">
+                <motion.div
+                  className="mt-4 flex gap-[2%] text-sm 2xl:text-base"
+                  style={{
+                    x: workspaceX,
+                  }}
+                >
+                  <div className="min-w-[60%] items-start flex flex-col justify-center gap-4 rounded-xl border border-dashed border-blue-400 p-4">
+                    <p className="text-xl">Frontend</p>
+                    <div className="flex-1">
+                      For effective state management,{" "}
+                      <span className="text-blue-600">Redux</span> was employed,
+                      guaranteeing smooth and predictable handling of the
+                      application state. Additionally,{" "}
+                      <span className="text-blue-600">React Query</span>, fully
+                      supported with TypeScript, was integrated to enhance data
+                      fetching and caching. A modern, responsive user interface
+                      prioritizing usability and aesthetics was developed using{" "}
+                      <span className="text-blue-600">MantineUI</span> and{" "}
+                      <span className="text-blue-600">Tailwind CSS</span>.
+                    </div>
+
+                    <div className="mt-2 flex-wrap gap-2 flex">
+                      <img
+                        src="/techs/react.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+                      <img
+                        src="/techs/vite.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+
+                      <img
+                        src="/techs/firebase.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+                      <img
+                        src="/techs/mantine.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+
+                      <img
+                        src="/techs/react-query.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+
+                      <img
+                        src="/techs/socket-io.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+                      <img
+                        src="/techs/tailwind.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+                    </div>
+                  </div>
+                  <div className="min-w-[60%] items-start flex flex-col justify-center gap-4 rounded-xl border border-dashed border-blue-400 p-4">
+                    <p className="text-xl">Backend</p>
+                    <div className="flex-1">
+                      Real-time communication functionalities were seamlessly
+                      incorporated using{" "}
+                      <span className="text-blue-600">socketIO</span>, enabling
+                      instantaneous messaging and collaboration among users. The
+                      database schema was optimized using{" "}
+                      <span className="text-blue-600">MySQL</span> and{" "}
+                      <span className="text-blue-600">Prisma</span>, ensuring
+                      efficient data storage and retrieval. Integration of{" "}
+                      <span className="text-blue-600">Redis</span>
+                      for caching purposes enhanced overall system performance
+                      and responsiveness.
+                    </div>
+                    <div className="mt-2 flex-wrap gap-2 flex">
+                      <img
+                        src="/techs/mysql.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+                      <img
+                        src="/techs/nestjs.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+                      <img
+                        src="/techs/firebase.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+
+                      <img
+                        src="/techs/prisma.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+                      <img
+                        src="/techs/redis.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+                      <img
+                        src="/techs/socket-io.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+                    </div>
                   </div>
 
-                  <div className="mt-2 space-x-2 flex">
-                    <img
-                      src="/techs/react.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-                    <img
-                      src="/techs/vite.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-
-                    <img
-                      src="/techs/firebase.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-                    <img
-                      src="/techs/mantine.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-
-                    <img
-                      src="/techs/react-query.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-
-                    <img
-                      src="/techs/socket-io.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-                    <img
-                      src="/techs/tailwind.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
+                  <div className="min-w-[60%] items-start flex flex-col justify-center gap-4 rounded-xl border border-dashed border-blue-400 p-4">
+                    <p className="text-xl">Deployment</p>
+                    <div className="flex-1">
+                      Docker was utilized for containerization, simplifying the
+                      deployment process and ensuring consistency across
+                      different environments. The application was deployed on{" "}
+                      <span className="text-blue-600">AWS</span>, with{" "}
+                      <span className="text-blue-600">Nginx</span> serving as a
+                      reverse proxy to enhance security and performance.
+                    </div>
+                    <div className="mt-2 flex-wrap gap-2 flex">
+                      <img
+                        src="/techs/ec2.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+                      <img
+                        src="/techs/ngnix.png"
+                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="min-w-[60%] items-start justify-center gap-4 rounded-xl border border-dashed border-blue-400 p-4">
-                  <p className="text-xl">Backend</p>
-                  <div>
-                    Real-time communication functionalities were seamlessly
-                    incorporated using socketIO, enabling instantaneous
-                    messaging and collaboration among users. The database schema
-                    was optimized using MySQL and Prisma, ensuring efficient
-                    data storage and retrieval. Integration of Redis for caching
-                    purposes enhanced overall system performance and
-                    responsiveness.
-                  </div>
-                  <div className="mt-2 space-x-2 flex">
-                    <img
-                      src="/techs/mysql.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-                    <img
-                      src="/techs/nestjs.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-                    <img
-                      src="/techs/firebase.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
+                </motion.div>
+              </div>
 
-                    <img
-                      src="/techs/prisma.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-                    <img
-                      src="/techs/redis.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-                    <img
-                      src="/techs/socket-io.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-                  </div>
-                </div>
-
-                <div className="min-w-[60%] items-start justify-center gap-4 rounded-xl border border-dashed border-blue-400 p-4">
-                  <p className="text-xl">Deployment</p>
-                  <div>
-                    Docker was utilized for containerization, simplifying the
-                    deployment process and ensuring consistency across different
-                    environments. The application was deployed on AWS, with
-                    Nginx serving as a reverse proxy to enhance security and
-                    performance.
-                  </div>
-                  <div className="mt-2 space-x-2 flex">
-                    <img
-                      src="/techs/ec2.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-                    <img
-                      src="/techs/ngnix.png"
-                      className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.button
-                className="mt-2 flex h-9 w-fit cursor-pointer items-center justify-center gap-2 rounded-lg border-none bg-slate-700 px-4 text-white outline-none hover:bg-slate-950"
-                initial={{ opacity: 0, translateX: -1000 }}
-                animate={{ opacity: 1, translateX: 0 }}
-                whileHover={{
-                  filter: "drop-shadow(0 0 4px #000000aa)",
-                  scale: 1.05,
-                }}
-                onClick={() => {
-                  window.open("/workspace.pdf");
-                }}
-              >
-                More details
-              </motion.button>
+              <div className="flex gap-2 mt-6 text-base">
+                <motion.a
+                  target="_blank"
+                  className="flex cursor-pointer items-center justify-center gap-1 rounded-lg text-gray-600 underline decoration-gray-300 hover:decoration-gray-600 border-none outline-none"
+                  initial={{ opacity: 0, translateX: -1000 }}
+                  animate={{ opacity: 1, translateX: 0 }}
+                  whileHover={{
+                    // filter: "drop-shadow(0 0 4px #000000aa)",
+                    scale: 1.05,
+                  }}
+                  href="https://github.com/SeNyterA/live-workspace"
+                >
+                  <IconBrandGithub size={24} /> Github
+                </motion.a>
+                <motion.a
+                  target="_blank"
+                  className="flex w-fit cursor-pointer items-center justify-center gap-1 rounded-lg text-gray-600 underline decoration-gray-300 hover:decoration-gray-600 border-none px-4 outline-none"
+                  initial={{ opacity: 0, translateX: -1000 }}
+                  animate={{ opacity: 1, translateX: 0 }}
+                  whileHover={{
+                    // filter: "drop-shadow(0 0 4px #000000aa)",
+                    scale: 1.05,
+                  }}
+                  href="https://workspace.senytera.online"
+                >
+                  More details
+                </motion.a>
+              </div>
             </motion.div>
+
+            <div className="aspect-square h-full overflow-hidden grid-cols-2 grid gap-4">
+              {workspaceApp.map((app) => (
+                <div className="aspect-square group relative" key={app.slogan}>
+                  <div className="h-1/2 bg-gray-950 flex p-10 text-gray-50 text-xl">
+                    <p>
+                      <p className="font-bold">{app.slogan}</p>
+                      <p className="text-sm text-gray-400">{app.description}</p>
+                    </p>
+                  </div>
+                  <div className="h-1/2 flex justify-center items-center w-1/2 translate-x-[100%]">
+                    <a
+                      target="_blank"
+                      className="flex gap-1 hover:font-semibold"
+                      href="https://workspace.senytera.online"
+                    >
+                      More <IconArrowRight />
+                    </a>
+                  </div>
+                  <img
+                    src="/workspace.png"
+                    className="w-full h-full object-cover object-left absolute bottom-0 left-0  group-hover:w-1/2 group-hover:h-1/2 transition-all duration-500"
+                  />
+                </div>
+              ))}
+            </div>
 
             {/* <div className="aspect-square h-full overflow-hidden rounded-2xl flex-col">
               <motion.div
@@ -782,13 +876,6 @@ export default function AboutMe() {
                 />
               </motion.div>
             </div> */}
-
-            <div className="aspect-square space-x-3 space-y-3 h-full overflow-hidden rounded-2xl gap-2 flex-col gird grid-cols-2">
-              <img src="/workspace.png" className="object-contain" />
-              <img src="/workspace.png" className="object-contain" />
-              <img src="/workspace.png" className="object-contain" />
-              <img src="/workspace.png" className="object-contain" />
-            </div>
           </div>
         </div>
       </div>
