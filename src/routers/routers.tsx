@@ -1,12 +1,12 @@
-import Portfolio from "@/portfolio/Portfolio";
-import AboutMe from "@/portfolio/secssions/AboutMe";
-import Contact from "@/portfolio/secssions/Contact";
-import Intro from "@/portfolio/secssions/Intro";
-import { Navigate, Outlet, createBrowserRouter } from "react-router-dom";
+import Portfolio from '@/portfolio/Portfolio'
+import AboutMe from '@/portfolio/secssions/AboutMe'
+import Contact from '@/portfolio/secssions/Contact'
+import Intro from '@/portfolio/secssions/Intro'
+import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom'
 
 export const routers = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: (
       <Portfolio>
         <Outlet />
@@ -14,22 +14,22 @@ export const routers = createBrowserRouter([
     ),
     children: [
       {
-        path: "/",
-        element: <Intro />,
+        path: '/',
+        element: <Intro />
       },
       {
-        path: "/skills&exprience",
-        element: <AboutMe />,
+        path: '/skills&exprience',
+        element: <AboutMe />
       },
       {
-        path: "/contact",
-        element: <Contact />,
-      },
-    ],
+        path: '/contact',
+        element: <Contact />
+      }
+    ]
   },
 
   {
-    path: "*",
-    element: <Navigate to="/" />,
-  },
-]);
+    path: '*',
+    element: <Navigate to='/' />
+  }
+])

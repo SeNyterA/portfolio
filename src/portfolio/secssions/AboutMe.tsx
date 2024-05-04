@@ -1,368 +1,359 @@
 import {
   IconArrowRight,
   IconBrandGithub,
-  IconDownload,
-} from "@tabler/icons-react";
+  IconDownload
+} from '@tabler/icons-react'
 import {
   motion,
   useMotionValueEvent,
   useScroll,
-  useTransform,
-} from "framer-motion";
-import { useLayoutEffect, useRef, useState } from "react";
+  useTransform
+} from 'framer-motion'
+import { useLayoutEffect, useRef, useState } from 'react'
 
 const workspaceApp = [
   {
-    slogan: "Pure Simplicity",
-    description: "User-friendly for productivity.",
+    slogan: 'Pure Simplicity',
+    description: 'User-friendly for productivity.'
   },
   {
-    slogan: "Peak Performance",
-    description: "Handle tasks with speed.",
+    slogan: 'Peak Performance',
+    description: 'Handle tasks with speed.'
   },
   {
-    slogan: "Solid Stability",
-    description: "Consistent, uninterrupted work.",
+    slogan: 'Solid Stability',
+    description: 'Consistent, uninterrupted work.'
   },
   {
-    slogan: "Easy Custom",
-    description: "Tailor your workspace with ease.",
-  },
-];
+    slogan: 'Easy Custom',
+    description: 'Tailor your workspace with ease.'
+  }
+]
 
 export default function AboutMe() {
-  const projectsRef = useRef<HTMLDivElement>(null);
-  const workspaceRef = useRef<HTMLDivElement>(null);
-  const viewPortRef = useRef<HTMLDivElement>(null);
-  const [page, setPage] = useState(0);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const projectsRef = useRef<HTMLDivElement>(null)
+  const workspaceRef = useRef<HTMLDivElement>(null)
+  const viewPortRef = useRef<HTMLDivElement>(null)
+  const [page, setPage] = useState(0)
+  const timeoutRef = useRef<NodeJS.Timeout>()
 
   const { scrollYProgress: projectsYProgress, scrollY } = useScroll({
     target: projectsRef,
-    axis: "y",
+    axis: 'y',
     container: viewPortRef,
     layoutEffect: true,
-    offset: ["start start", "end end"],
-  });
+    offset: ['start start', 'end end']
+  })
 
   const { scrollYProgress: workspaceYProgress } = useScroll({
     target: workspaceRef,
-    axis: "y",
+    axis: 'y',
     container: viewPortRef,
     layoutEffect: true,
-    offset: ["start start", "end end"],
-  });
+    offset: ['start start', 'end end']
+  })
 
-  useMotionValueEvent(scrollY, "change", (value) => {
-    const height = viewPortRef?.current?.clientHeight;
-    if (!height) return;
-    setPage(Math.round(value / height));
-  });
+  useMotionValueEvent(scrollY, 'change', value => {
+    const height = viewPortRef?.current?.clientHeight
+    if (!height) return
+    setPage(Math.round(value / height))
+  })
 
-  const projectsX = useTransform(projectsYProgress, [0.25, 1], ["0%", "-266%"]);
-  const workspaceX = useTransform(
-    workspaceYProgress,
-    [0.25, 1],
-    ["0%", "-84%"]
-  );
-  const workspaceImgsX = useTransform(
-    workspaceYProgress,
-    [0.25, 1],
-    ["0%", "-600%"]
-  );
+  const projectsX = useTransform(projectsYProgress, [0.25, 1], ['0%', '-266%'])
+  const workspaceX = useTransform(workspaceYProgress, [0.25, 1], ['0%', '-84%'])
 
   useLayoutEffect(() => {
     const scrollTrigger = viewPortRef?.current?.addEventListener(
-      "scrollend",
-      (e) => {
-        clearTimeout(timeoutRef.current);
+      'scrollend',
+      () => {
+        clearTimeout(timeoutRef.current)
         timeoutRef.current = setTimeout(() => {
-          const height = viewPortRef?.current?.clientHeight;
-          if (!height) return;
+          const height = viewPortRef?.current?.clientHeight
+          if (!height) return
           if (Math.round(scrollY.get() / height) <= 10)
             viewPortRef.current?.scrollTo({
               top: Math.round(scrollY.get() / height) * height,
-              behavior: "smooth",
-            });
-        }, 500);
+              behavior: 'smooth'
+            })
+        }, 500)
       }
-    );
-    if (!scrollTrigger) return;
+    )
+    if (!scrollTrigger) return
     return () => {
-      clearTimeout(timeoutRef.current);
-      viewPortRef?.current?.removeEventListener("scrollend", scrollTrigger);
-    };
-  }, []);
+      clearTimeout(timeoutRef.current)
+      viewPortRef?.current?.removeEventListener('scrollend', scrollTrigger)
+    }
+  }, [])
 
   const getPageTitle = () => {
     switch (page) {
       case 0:
-        return "About Me";
+        return 'About Me'
       case 1:
-        return "Skills";
+        return 'Skills'
       case 2:
       case 3:
       case 4:
       case 5:
       case 6:
-        return "Experience";
+        return 'Experience'
       default:
-        return "Pesonal projects";
+        return 'Pesonal projects'
     }
-  };
+  }
 
   return (
     <>
-      <div className="absolute bottom-2 left-1/2 z-50 flex translate-x-[-50%] items-center gap-2 text-sm font-semibold uppercase">
-        <div className="h-0.5 w-10 bg-black" />
+      <div className='absolute bottom-2 left-1/2 z-50 flex translate-x-[-50%] items-center gap-2 text-sm font-semibold uppercase'>
+        <div className='h-0.5 w-10 bg-black' />
         {getPageTitle()}
-        <div className="h-0.5 w-10 bg-black" />
+        <div className='h-0.5 w-10 bg-black' />
       </div>
 
       <div
-        className="absolute inset-0 overflow-x-hidden overflow-y-scroll scroll-smooth text-justify text-slate-800"
+        className='absolute inset-0 overflow-x-hidden overflow-y-scroll scroll-smooth text-justify text-slate-800'
         ref={viewPortRef}
         onScroll={() => {
-          clearTimeout(timeoutRef.current);
+          clearTimeout(timeoutRef.current)
         }}
       >
-        <div className="flex h-full items-center gap-10 p-10">
-          <div className="relative flex-1">
+        <div className='flex h-full items-center gap-10 p-10'>
+          <div className='relative flex-1'>
             <motion.p
-              className="text-4xl font-black"
+              className='text-4xl font-black'
               style={{
-                fontFamily: '"Neon Spark", sans-serif',
+                fontFamily: '"Neon Spark", sans-serif'
               }}
             >
               Nguyen Duc Khang
             </motion.p>
-            <div className="animated-text relative text-3xl">
-              I'm a <span className="text-blue-600"></span>
+            <div className='animated-text relative text-3xl'>
+              I'm a <span className='text-blue-600'></span>
             </div>
-            <p className="cursor-text">
-              I'm a{" "}
-              <span className="font-semibold text-blue-600">
+            <p className='cursor-text'>
+              I'm a{' '}
+              <span className='font-semibold text-blue-600'>
                 Full-Stack Developer
-              </span>{" "}
-              with <span className="font-semibold text-blue-600">2+ years</span>{" "}
+              </span>{' '}
+              with <span className='font-semibold text-blue-600'>2+ years</span>{' '}
               of experience in creating scalable web applications. My skills
-              include{" "}
-              <span className="font-semibold text-blue-600">NodeJS</span> (
-              <span className="font-semibold text-blue-600">NestJS</span>),{" "}
-              <span className="font-semibold text-blue-600">ReactJS</span>(
-              <span className="font-semibold text-blue-600">NextJS</span>),{" "}
-              <span className="font-semibold text-blue-600">TypeScript</span>,{" "}
-              <span className="font-semibold text-blue-600">RESTful APIs</span>,{" "}
-              <span className="font-semibold text-blue-600">GraphQL</span>, and{" "}
-              <span className="font-semibold text-blue-600">
+              include{' '}
+              <span className='font-semibold text-blue-600'>NodeJS</span> (
+              <span className='font-semibold text-blue-600'>NestJS</span>),{' '}
+              <span className='font-semibold text-blue-600'>ReactJS</span>(
+              <span className='font-semibold text-blue-600'>NextJS</span>),{' '}
+              <span className='font-semibold text-blue-600'>TypeScript</span>,{' '}
+              <span className='font-semibold text-blue-600'>RESTful APIs</span>,{' '}
+              <span className='font-semibold text-blue-600'>GraphQL</span>, and{' '}
+              <span className='font-semibold text-blue-600'>
                 database technologies
               </span>
               . I'm passionate about building user-centric software with
-              exceptional user experiences. My workflow is optimized through{" "}
-              <span className="font-semibold text-blue-600">Git</span>,{" "}
-              <span className="font-semibold text-blue-600">Docker</span>,{" "}
-              <span className="font-semibold text-blue-600">AWS</span> and{" "}
-              <span className="font-semibold text-blue-600">
+              exceptional user experiences. My workflow is optimized through{' '}
+              <span className='font-semibold text-blue-600'>Git</span>,{' '}
+              <span className='font-semibold text-blue-600'>Docker</span>,{' '}
+              <span className='font-semibold text-blue-600'>AWS</span> and{' '}
+              <span className='font-semibold text-blue-600'>
                 Agile/Scrum methodologies
               </span>
               . I'm seeking a challenging opportunity to contribute my skills to
               a fast-paced and innovative team.
             </p>
 
-            <div className="absolute inset-x-0 mt-2 overflow-x-scroll">
-              <div className="flex !min-w-fit gap-2 icons-inner">
-                <div className="flex gap-2 icons-inner w-fit !min-w-fit">
+            <div className='absolute inset-x-0 mt-2 overflow-x-scroll'>
+              <div className='icons-inner flex !min-w-fit gap-2'>
+                <div className='icons-inner flex w-fit !min-w-fit gap-2'>
                   <img
-                    src="/techs/react.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/react.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/nextjs.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/nextjs.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/nestjs.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/nestjs.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/firebase.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/firebase.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/redis.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/redis.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/redux.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/redux.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/react-query.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/react-query.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/tailwind.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/tailwind.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/socket-io.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/socket-io.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/mysql.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/mysql.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/mongo.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/mongo.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/typeorm.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/typeorm.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/prisma.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/prisma.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/graphql.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/graphql.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/apollographql.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/apollographql.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/vite.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/vite.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/mantine.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/mantine.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/antd.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/antd.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/material.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/material.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/docker.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/docker.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/ec2.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/ec2.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/ngnix.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/ngnix.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                 </div>
-                <div className="flex gap-2 icons-inner w-fit !min-w-fit">
+                <div className='icons-inner flex w-fit !min-w-fit gap-2'>
                   <img
-                    src="/techs/react.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/react.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/nextjs.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/nextjs.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/nestjs.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/nestjs.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/firebase.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/firebase.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/redis.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/redis.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/redux.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/redux.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/react-query.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/react-query.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/tailwind.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/tailwind.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/socket-io.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/socket-io.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/mysql.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/mysql.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/mongo.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/mongo.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/typeorm.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/typeorm.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/prisma.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/prisma.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/graphql.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/graphql.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/apollographql.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/apollographql.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/vite.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/vite.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/mantine.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/mantine.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/antd.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/antd.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/material.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/material.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/docker.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/docker.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/ec2.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/ec2.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                   <img
-                    src="/techs/ngnix.png"
-                    className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                    src='/techs/ngnix.png'
+                    className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                   />
                 </div>
               </div>
 
               <motion.button
-                className="mt-2 flex h-9 cursor-pointer items-center justify-center gap-2 rounded-lg border-none bg-slate-700 px-4 text-white outline-none hover:bg-slate-950"
+                className='mt-2 flex h-9 cursor-pointer items-center justify-center gap-2 rounded-lg border-none bg-slate-700 px-4 text-white outline-none hover:bg-slate-950'
                 initial={{ opacity: 0, translateX: -1000 }}
                 animate={{ opacity: 1, translateX: 0 }}
                 whileHover={{
-                  filter: "drop-shadow(0 0 4px #000000aa)",
-                  scale: 1.05,
+                  filter: 'drop-shadow(0 0 4px #000000aa)',
+                  scale: 1.05
                 }}
                 onClick={() => {
-                  window.open("/NguyenDucKhang.pdf");
+                  window.open('/NguyenDucKhang.pdf')
                 }}
               >
                 <IconDownload size={16} />
@@ -376,29 +367,29 @@ export default function AboutMe() {
             loop
             muted
             playsInline
-            src="https://cdn.dribbble.com/userupload/10476878/file/original-6f168c2501cd23f5344e2a847122ac26.mp4"
-            className="aspect-square h-full overflow-hidden rounded-2xl object-cover"
+            src='/ft.mp4'
+            className='aspect-square h-full overflow-hidden rounded-2xl object-cover'
           />
         </div>
 
-        <div className="flex h-full items-center gap-10 p-10">
+        <div className='flex h-full items-center gap-10 p-10'>
           <video
             autoPlay
             loop
             muted
             playsInline
-            src="https://cdn.dribbble.com/userupload/12695681/file/original-fa27c05d79d2f61e77453c02398f1859.mp4"
-            className="aspect-square h-full overflow-hidden rounded-2xl object-cover"
+            src='/fe.mp4'
+            className='aspect-square h-full overflow-hidden rounded-2xl object-cover'
           />
-          <motion.div className="flex-1 flex-col items-center justify-center rounded-xl text-base">
-            <p className="text-2xl font-semibold">Frontend</p>
+          <motion.div className='flex-1 flex-col items-center justify-center rounded-xl text-base'>
+            <p className='text-2xl font-semibold'>Frontend</p>
             <p>
               I am a skilled creator committed to designing engaging web and
               mobile experiences that prioritize user satisfaction. I possess
-              expertise in advanced technologies like{" "}
-              <span className="text-lime-600">ReactJS</span> ,{" "}
-              <span className="text-lime-600">NextJS</span> and{" "}
-              <span className="text-lime-600">React Native</span> which I
+              expertise in advanced technologies like{' '}
+              <span className='text-lime-600'>ReactJS</span> ,{' '}
+              <span className='text-lime-600'>NextJS</span> and{' '}
+              <span className='text-lime-600'>React Native</span> which I
               utilize to build complex, high-performance applications. With a
               strong foundation and the necessary skills, I adeptly tackle the
               challenges of frontend development, leveraging my expertise and
@@ -408,57 +399,57 @@ export default function AboutMe() {
 
             <ul>
               <li>
-                Deep understanding of{" "}
-                <span className="text-lime-600">React Hook</span> and system
+                Deep understanding of{' '}
+                <span className='text-lime-600'>React Hook</span> and system
                 optimization techniques to ensure optimal performance and user
                 experience.
               </li>
               <li>
                 For building basic and advanced web structures, a strong command
-                of <span className="text-lime-600">HTML</span>,{" "}
-                <span className="text-lime-600">CSS</span>,{" "}
-                <span className="text-lime-600">SCSS</span>,{" "}
-                <span className="text-lime-600">Responsive</span> and{" "}
-                <span className="text-lime-600">TailwindCSS</span> is essential.
+                of <span className='text-lime-600'>HTML</span>,{' '}
+                <span className='text-lime-600'>CSS</span>,{' '}
+                <span className='text-lime-600'>SCSS</span>,{' '}
+                <span className='text-lime-600'>Responsive</span> and{' '}
+                <span className='text-lime-600'>TailwindCSS</span> is essential.
               </li>
               <li>
-                Utilize popular UI libraries such as{" "}
-                <span className="text-lime-600">Ant Design</span>,{" "}
-                <span className="text-lime-600">MaterialUI</span>, and{" "}
-                <span className="text-lime-600">Mantine</span> to create
+                Utilize popular UI libraries such as{' '}
+                <span className='text-lime-600'>Ant Design</span>,{' '}
+                <span className='text-lime-600'>MaterialUI</span>, and{' '}
+                <span className='text-lime-600'>Mantine</span> to create
                 visually appealing and intuitive user interfaces.
               </li>
               <li>
                 Specialized in handling and managing state management,
-                particularly <span className="text-lime-600">Redux</span>, for
+                particularly <span className='text-lime-600'>Redux</span>, for
                 complex systems.
               </li>
               <li>
-                Mastered <span className="text-lime-600">Axios</span>,{" "}
-                <span className="text-lime-600">RESTful API</span> (
-                <span className="text-lime-600">SWR</span>,{" "}
-                <span className="text-lime-600">ReactQuery</span>) and
-                <span className="text-lime-600">Graphql</span> (
-                <span className="text-lime-600">ApolloClient</span>) for
+                Mastered <span className='text-lime-600'>Axios</span>,{' '}
+                <span className='text-lime-600'>RESTful API</span> (
+                <span className='text-lime-600'>SWR</span>,{' '}
+                <span className='text-lime-600'>ReactQuery</span>) and
+                <span className='text-lime-600'>Graphql</span> (
+                <span className='text-lime-600'>ApolloClient</span>) for
                 efficient data access.
               </li>
             </ul>
           </motion.div>
         </div>
 
-        <div className="flex h-full items-center gap-10 p-10">
-          <motion.div className="flex-1 flex-col items-center justify-center rounded-xl text-base">
-            <p className="text-2xl font-semibold">Backend</p>
+        <div className='flex h-full items-center gap-10 p-10'>
+          <motion.div className='flex-1 flex-col items-center justify-center rounded-xl text-base'>
+            <p className='text-2xl font-semibold'>Backend</p>
             <p>
               I have a specialization in developing robust and real-time
               systems. Building high-performance server-side solutions is my
-              passion and I use <span className="text-lime-600">NodeJS</span>{" "}
-              and <span className="text-lime-600">NestJS</span> to create APIs
+              passion and I use <span className='text-lime-600'>NodeJS</span>{' '}
+              and <span className='text-lime-600'>NestJS</span> to create APIs
               and backend services that meet the highest standards of
               performance and scalability. My expertise also includes designing
               and implementing
-              <span className="text-lime-600">RESTful APIs</span> and{" "}
-              <span className="text-lime-600">GraphQL</span> to facilitate
+              <span className='text-lime-600'>RESTful APIs</span> and{' '}
+              <span className='text-lime-600'>GraphQL</span> to facilitate
               flexible and efficient data access. With my extensive experience,
               I have a proven track record of optimizing application speed and
               building real-time functionalities to provide exceptional user
@@ -467,18 +458,18 @@ export default function AboutMe() {
 
             <ul>
               <li>
-                Adept at using ORM frameworks such as{" "}
-                <span className="text-lime-600">TypeORM</span>,{" "}
-                <span className="text-lime-600">Prisma</span> for efficient data
-                modeling and seamless database interaction with{" "}
-                <span className="text-lime-600">MySQL</span>,{" "}
-                <span className="text-lime-600">PostgreSQL</span>, and{" "}
-                <span className="text-lime-600">MongoDB</span>.
+                Adept at using ORM frameworks such as{' '}
+                <span className='text-lime-600'>TypeORM</span>,{' '}
+                <span className='text-lime-600'>Prisma</span> for efficient data
+                modeling and seamless database interaction with{' '}
+                <span className='text-lime-600'>MySQL</span>,{' '}
+                <span className='text-lime-600'>PostgreSQL</span>, and{' '}
+                <span className='text-lime-600'>MongoDB</span>.
               </li>
               <li>
-                Implement real-time features using{" "}
-                <span className="text-lime-600">SocketIO</span> and leverage{" "}
-                <span className="text-lime-600">Redis</span> for caching and
+                Implement real-time features using{' '}
+                <span className='text-lime-600'>SocketIO</span> and leverage{' '}
+                <span className='text-lime-600'>Redis</span> for caching and
                 data storage optimization.
               </li>
               <li>
@@ -486,9 +477,9 @@ export default function AboutMe() {
                 Programming, and Design Patterns.
               </li>
               <li>
-                Using tools like <span className="text-lime-600">Docker</span>,{" "}
-                <span className="text-lime-600">AWS</span>, and{" "}
-                <span className="text-lime-600">Nginx</span> for development and
+                Using tools like <span className='text-lime-600'>Docker</span>,{' '}
+                <span className='text-lime-600'>AWS</span>, and{' '}
+                <span className='text-lime-600'>Nginx</span> for development and
                 deployment processes, management, and automation.
               </li>
               <li>
@@ -503,24 +494,23 @@ export default function AboutMe() {
             loop
             muted
             playsInline
-            src="/develop.mp4"
-            className="aspect-square h-full overflow-hidden rounded-2xl object-cover"
+            src='/be.mp4'
+            className='aspect-square h-full overflow-hidden rounded-2xl object-cover'
           />
         </div>
 
-        <div className="projects relative h-[400%]" ref={projectsRef}>
-          <div className="sticky top-0 flex h-1/4 gap-10 p-10">
+        <div className='projects relative h-[400%]' ref={projectsRef}>
+          <div className='sticky top-0 flex h-1/4 gap-10 p-10'>
             <video
               autoPlay
               loop
               muted
               playsInline
-              src="https://cdn.dribbble.com/userupload/9232958/file/original-0bb0cc42e6ae84c6e1478cd6522a2af6.mp4"
-              // src='https://cdn.dribbble.com/userupload/7610900/file/original-e95e0b10875ec267692fa079cb3c1122.mp4'
-              className="aspect-square h-full overflow-hidden rounded-2xl object-cover"
+              src='/exp.mp4'
+              className='aspect-square h-full overflow-hidden rounded-2xl object-cover'
             />
-            <motion.div className="z-50 flex flex-1 flex-col justify-center overflow-x-hidden rounded-xl">
-              <p className="text-2xl font-semibold">TGL Solutions</p>
+            <motion.div className='z-50 flex flex-1 flex-col justify-center overflow-x-hidden rounded-xl'>
+              <p className='text-2xl font-semibold'>TGL Solutions</p>
               <p>
                 I have been working as a Full-Stack Developer intern since March
                 2022, and I transitioned to full-time in April 2022. I work for
@@ -534,14 +524,14 @@ export default function AboutMe() {
               high-quality solutions that meet our clients' requirements. */}
               </p>
               <motion.div
-                className="mt-4 flex gap-[2%] text-sm 2xl:text-base"
+                className='mt-4 flex gap-[2%] text-sm 2xl:text-base'
                 // ref={projectRefContainer}
                 style={{
-                  x: projectsX,
+                  x: projectsX
                 }}
               >
-                <div className="min-w-[90%] flex-col items-center justify-center rounded-xl border border-dashed border-blue-400 p-4">
-                  <p className="text-xl">Finaccel module</p>
+                <div className='min-w-[90%] flex-col items-center justify-center rounded-xl border border-dashed border-blue-400 p-4'>
+                  <p className='text-xl'>Finaccel module</p>
                   <p>
                     A booking system built with Next.js caters to businesses
                     needing a web-based platform optimized for mobile devices.
@@ -552,8 +542,8 @@ export default function AboutMe() {
                     experience.
                   </p>
                   <p>
-                    Role:{" "}
-                    <span className="text-blue-600">Frontend developer</span>
+                    Role:{' '}
+                    <span className='text-blue-600'>Frontend developer</span>
                   </p>
                   <p>
                     My contributions: I integrated Firebase authentication with
@@ -565,8 +555,8 @@ export default function AboutMe() {
                     functionality to support the booking system.
                   </p>
                 </div>
-                <div className="min-w-[90%] flex-col items-center justify-center rounded-xl border border-dashed border-blue-400 p-4">
-                  <p className="text-xl">Travel booking system</p>
+                <div className='min-w-[90%] flex-col items-center justify-center rounded-xl border border-dashed border-blue-400 p-4'>
+                  <p className='text-xl'>Travel booking system</p>
                   <p>
                     This project aims to renew an outdated logistics system
                     using new technologies based on customer requirements. The
@@ -576,8 +566,8 @@ export default function AboutMe() {
                     functional.
                   </p>
                   <p>
-                    Role:{" "}
-                    <span className="text-blue-600">
+                    Role:{' '}
+                    <span className='text-blue-600'>
                       Frontend, Backend developer
                     </span>
                   </p>
@@ -591,8 +581,8 @@ export default function AboutMe() {
                     well-structured project.
                   </p>
                 </div>
-                <div className="min-w-[90%] flex-col items-center justify-center rounded-xl border border-dashed border-blue-400 p-4">
-                  <p className="text-xl">House Inspection System</p>
+                <div className='min-w-[90%] flex-col items-center justify-center rounded-xl border border-dashed border-blue-400 p-4'>
+                  <p className='text-xl'>House Inspection System</p>
                   <p>
                     This project involves a web and mobile application system
                     that is designed to conduct surveys and evaluations of
@@ -601,8 +591,8 @@ export default function AboutMe() {
                     to assess the condition and quality of these structures.
                   </p>
                   <p>
-                    Role:{" "}
-                    <span className="text-blue-600">
+                    Role:{' '}
+                    <span className='text-blue-600'>
                       Frontend, Backend, Mobile developer
                     </span>
                   </p>
@@ -620,8 +610,8 @@ export default function AboutMe() {
                   </p>
                 </div>
 
-                <div className="min-w-[90%] flex-col items-center justify-center rounded-xl border border-dashed border-blue-400 p-4">
-                  <p className="text-xl">Custom open-source</p>
+                <div className='min-w-[90%] flex-col items-center justify-center rounded-xl border border-dashed border-blue-400 p-4'>
+                  <p className='text-xl'>Custom open-source</p>
                   <p>
                     The aim of this project is to improve the functionality of
                     Mattermost, an open-source code, to facilitate better
@@ -634,7 +624,7 @@ export default function AboutMe() {
                     management of internal activities.
                   </p>
                   <p>
-                    Role: <span className="text-blue-600">Frontend</span>
+                    Role: <span className='text-blue-600'>Frontend</span>
                   </p>
                   <p>
                     I have made significant contributions by customizing and
@@ -651,201 +641,201 @@ export default function AboutMe() {
           </div>
         </div>
 
-        <div className="projects relative h-[300%]" ref={workspaceRef}>
-          <div className="sticky top-0 flex h-1/3 gap-10 p-10">
-            <motion.div className="z-50 flex flex-1 flex-col justify-center rounded-xl">
-              <p className="text-2xl font-semibold">Live workspace</p>
+        <div className='projects relative h-[300%]' ref={workspaceRef}>
+          <div className='sticky top-0 flex h-1/3 gap-10 p-10'>
+            <motion.div className='z-50 flex flex-1 flex-col justify-center rounded-xl'>
+              <p className='text-2xl font-semibold'>Live workspace</p>
               <p>
-                The development of a comprehensive{" "}
-                <span className="text-blue-600">
+                The development of a comprehensive{' '}
+                <span className='text-blue-600'>
                   real-time workspace system
                 </span>
-                focused on integrating{" "}
-                <span className="text-blue-600">chat functionality</span>,{" "}
-                <span className="text-blue-600">notifications</span>, and
-                <span className="text-blue-600">task management features</span>.
-                Crafted using a cutting-edge tech stack including{" "}
-                <span className="text-blue-600">NestJS</span> and{" "}
-                <span className="text-blue-600">ReactJS</span>. With a strong
+                focused on integrating{' '}
+                <span className='text-blue-600'>chat functionality</span>,{' '}
+                <span className='text-blue-600'>notifications</span>, and
+                <span className='text-blue-600'>task management features</span>.
+                Crafted using a cutting-edge tech stack including{' '}
+                <span className='text-blue-600'>NestJS</span> and{' '}
+                <span className='text-blue-600'>ReactJS</span>. With a strong
                 emphasis on speed and efficiency, the system ensured optimal
                 performance and responsiveness, enabling swift and seamless
                 interactions within the workspace environment.
               </p>
-              <div className="overflow-x-hidden">
+              <div className='overflow-x-hidden'>
                 <motion.div
-                  className="mt-4 flex gap-[2%] text-sm 2xl:text-base"
+                  className='mt-4 flex gap-[2%] text-sm 2xl:text-base'
                   style={{
-                    x: workspaceX,
+                    x: workspaceX
                   }}
                 >
-                  <div className="min-w-[60%] items-start flex flex-col justify-center gap-4 rounded-xl border border-dashed border-blue-400 p-4">
-                    <p className="text-xl">Frontend</p>
-                    <div className="flex-1">
-                      For effective state management,{" "}
-                      <span className="text-blue-600">Redux</span> was employed,
+                  <div className='flex min-w-[60%] flex-col items-start justify-center gap-4 rounded-xl border border-dashed border-blue-400 p-4'>
+                    <p className='text-xl'>Frontend</p>
+                    <div className='flex-1'>
+                      For effective state management,{' '}
+                      <span className='text-blue-600'>Redux</span> was employed,
                       guaranteeing smooth and predictable handling of the
-                      application state. Additionally,{" "}
-                      <span className="text-blue-600">React Query</span>, fully
+                      application state. Additionally,{' '}
+                      <span className='text-blue-600'>React Query</span>, fully
                       supported with TypeScript, was integrated to enhance data
                       fetching and caching. A modern, responsive user interface
-                      prioritizing usability and aesthetics was developed using{" "}
-                      <span className="text-blue-600">MantineUI</span> and{" "}
-                      <span className="text-blue-600">Tailwind CSS</span>.
+                      prioritizing usability and aesthetics was developed using{' '}
+                      <span className='text-blue-600'>MantineUI</span> and{' '}
+                      <span className='text-blue-600'>Tailwind CSS</span>.
                     </div>
 
-                    <div className="mt-2 flex-wrap gap-2 flex">
+                    <div className='mt-2 flex flex-wrap gap-2'>
                       <img
-                        src="/techs/react.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/react.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
                       <img
-                        src="/techs/vite.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                      />
-
-                      <img
-                        src="/techs/firebase.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
-                      />
-                      <img
-                        src="/techs/mantine.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/vite.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
 
                       <img
-                        src="/techs/react-query.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/firebase.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                      />
+                      <img
+                        src='/techs/mantine.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
 
                       <img
-                        src="/techs/socket-io.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/react-query.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
+                      />
+
+                      <img
+                        src='/techs/socket-io.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
                       <img
-                        src="/techs/tailwind.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/tailwind.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
                     </div>
                   </div>
-                  <div className="min-w-[60%] items-start flex flex-col justify-center gap-4 rounded-xl border border-dashed border-blue-400 p-4">
-                    <p className="text-xl">Backend</p>
-                    <div className="flex-1">
+                  <div className='flex min-w-[60%] flex-col items-start justify-center gap-4 rounded-xl border border-dashed border-blue-400 p-4'>
+                    <p className='text-xl'>Backend</p>
+                    <div className='flex-1'>
                       Real-time communication functionalities were seamlessly
-                      incorporated using{" "}
-                      <span className="text-blue-600">socketIO</span>, enabling
+                      incorporated using{' '}
+                      <span className='text-blue-600'>socketIO</span>, enabling
                       instantaneous messaging and collaboration among users. The
-                      database schema was optimized using{" "}
-                      <span className="text-blue-600">MySQL</span> and{" "}
-                      <span className="text-blue-600">Prisma</span>, ensuring
-                      efficient data storage and retrieval. Integration of{" "}
-                      <span className="text-blue-600">Redis</span>
+                      database schema was optimized using{' '}
+                      <span className='text-blue-600'>MySQL</span> and{' '}
+                      <span className='text-blue-600'>Prisma</span>, ensuring
+                      efficient data storage and retrieval. Integration of{' '}
+                      <span className='text-blue-600'>Redis</span>
                       for caching purposes enhanced overall system performance
                       and responsiveness.
                     </div>
-                    <div className="mt-2 flex-wrap gap-2 flex">
+                    <div className='mt-2 flex flex-wrap gap-2'>
                       <img
-                        src="/techs/mysql.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/mysql.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
                       <img
-                        src="/techs/nestjs.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/nestjs.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
                       <img
-                        src="/techs/firebase.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/firebase.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
 
                       <img
-                        src="/techs/prisma.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/prisma.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
                       <img
-                        src="/techs/redis.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/redis.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
                       <img
-                        src="/techs/socket-io.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/socket-io.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
                     </div>
                   </div>
 
-                  <div className="min-w-[60%] items-start flex flex-col justify-center gap-4 rounded-xl border border-dashed border-blue-400 p-4">
-                    <p className="text-xl">Deployment</p>
-                    <div className="flex-1">
+                  <div className='flex min-w-[60%] flex-col items-start justify-center gap-4 rounded-xl border border-dashed border-blue-400 p-4'>
+                    <p className='text-xl'>Deployment</p>
+                    <div className='flex-1'>
                       Docker was utilized for containerization, simplifying the
                       deployment process and ensuring consistency across
-                      different environments. The application was deployed on{" "}
-                      <span className="text-blue-600">AWS</span>, with{" "}
-                      <span className="text-blue-600">Nginx</span> serving as a
+                      different environments. The application was deployed on{' '}
+                      <span className='text-blue-600'>AWS</span>, with{' '}
+                      <span className='text-blue-600'>Nginx</span> serving as a
                       reverse proxy to enhance security and performance.
                     </div>
-                    <div className="mt-2 flex-wrap gap-2 flex">
+                    <div className='mt-2 flex flex-wrap gap-2'>
                       <img
-                        src="/techs/ec2.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/ec2.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
                       <img
-                        src="/techs/ngnix.png"
-                        className="h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16"
+                        src='/techs/ngnix.png'
+                        className='h-10 w-10 rounded p-2 bg-blend-luminosity 2xl:h-16 2xl:w-16'
                       />
                     </div>
                   </div>
                 </motion.div>
               </div>
 
-              <div className="flex gap-2 mt-6 text-base">
+              <div className='mt-6 flex gap-2 text-base'>
                 <motion.a
-                  target="_blank"
-                  className="flex cursor-pointer items-center justify-center gap-1 rounded-lg text-gray-600 underline decoration-gray-300 hover:decoration-gray-600 border-none outline-none"
+                  target='_blank'
+                  className='flex cursor-pointer items-center justify-center gap-1 rounded-lg border-none text-gray-600 underline decoration-gray-300 outline-none hover:decoration-gray-600'
                   initial={{ opacity: 0, translateX: -1000 }}
                   animate={{ opacity: 1, translateX: 0 }}
                   whileHover={{
                     // filter: "drop-shadow(0 0 4px #000000aa)",
-                    scale: 1.05,
+                    scale: 1.05
                   }}
-                  href="https://github.com/SeNyterA/live-workspace"
+                  href='https://github.com/SeNyterA/live-workspace'
                 >
                   <IconBrandGithub size={24} /> Github
                 </motion.a>
                 <motion.a
-                  target="_blank"
-                  className="flex w-fit cursor-pointer items-center justify-center gap-1 rounded-lg text-gray-600 underline decoration-gray-300 hover:decoration-gray-600 border-none px-4 outline-none"
+                  target='_blank'
+                  className='flex w-fit cursor-pointer items-center justify-center gap-1 rounded-lg border-none px-4 text-gray-600 underline decoration-gray-300 outline-none hover:decoration-gray-600'
                   initial={{ opacity: 0, translateX: -1000 }}
                   animate={{ opacity: 1, translateX: 0 }}
                   whileHover={{
                     // filter: "drop-shadow(0 0 4px #000000aa)",
-                    scale: 1.05,
+                    scale: 1.05
                   }}
-                  href="https://workspace.senytera.online"
+                  href='https://workspace.senytera.online'
                 >
                   More details
                 </motion.a>
               </div>
             </motion.div>
 
-            <div className="aspect-square h-full overflow-hidden grid-cols-2 grid gap-4">
-              {workspaceApp.map((app) => (
-                <div className="aspect-square group relative" key={app.slogan}>
-                  <div className="h-1/2 bg-gray-950 flex p-10 text-gray-50 text-xl">
+            <div className='grid aspect-square h-full grid-cols-2 gap-4 overflow-hidden'>
+              {workspaceApp.map(app => (
+                <div className='group relative aspect-square' key={app.slogan}>
+                  <div className='flex h-1/2 bg-gray-950 p-10 text-xl text-gray-50'>
                     <p>
-                      <p className="font-bold">{app.slogan}</p>
-                      <p className="text-sm text-gray-400">{app.description}</p>
+                      <p className='font-bold'>{app.slogan}</p>
+                      <p className='text-sm text-gray-400'>{app.description}</p>
                     </p>
                   </div>
-                  <div className="h-1/2 flex justify-center items-center w-1/2 translate-x-[100%]">
+                  <div className='flex h-1/2 w-1/2 translate-x-[100%] items-center justify-center'>
                     <a
-                      target="_blank"
-                      className="flex gap-1 hover:font-semibold"
-                      href="https://workspace.senytera.online"
+                      target='_blank'
+                      className='flex gap-1 hover:font-semibold'
+                      href='https://workspace.senytera.online'
                     >
                       More <IconArrowRight />
                     </a>
                   </div>
                   <img
-                    src="/workspace.png"
-                    className="w-full h-full object-cover object-left absolute bottom-0 left-0  group-hover:w-1/2 group-hover:h-1/2 transition-all duration-500"
+                    src='/workspace.png'
+                    className='absolute bottom-0 left-0 h-full w-full object-cover object-left  transition-all duration-500 group-hover:h-1/2 group-hover:w-1/2'
                   />
                 </div>
               ))}
@@ -880,5 +870,5 @@ export default function AboutMe() {
         </div>
       </div>
     </>
-  );
+  )
 }

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 export const Chip = ({
   text,
@@ -17,7 +17,7 @@ export const Chip = ({
         selected
           ? 'text-white'
           : 'text-slate-950 hover:bg-slate-700 hover:text-slate-200'
-      } relative rounded-md border-none bg-blend-multiply cursor-pointer bg-transparent px-2.5 py-0.5 text-base outline-none transition-colors`}
+      } relative cursor-pointer rounded-md border-none bg-transparent px-2.5 py-0.5 text-base bg-blend-multiply outline-none transition-colors`}
     >
       <span className='relative z-10'>{text}</span>
       {selected && (

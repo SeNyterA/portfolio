@@ -1,22 +1,22 @@
-import { IconArrowRight } from "@tabler/icons-react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import React, { useRef } from "react";
+import { IconArrowRight } from '@tabler/icons-react'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import React, { useRef } from 'react'
 
 const Contact = () => {
   return (
-    <section className="absolute inset-0 flex items-end justify-center gap-10 p-10">
-      <div className="mx-auto w-full">
+    <section className='absolute inset-0 flex items-end justify-center gap-10 p-10'>
+      <div className='mx-auto w-full'>
         <Link
-          heading="Senytera@gmail.com"
-          subheading="Email me"
-          imgSrc="/email.webp"
-          href="mailto:"
+          heading='Senytera@gmail.com'
+          subheading='Email me'
+          imgSrc='/email.webp'
+          href='mailto:'
         />
         <Link
-          heading="+84 849 630 412"
-          subheading="Contact me via phone or Zalo"
-          imgSrc="/phone.jpeg"
-          href="tel:"
+          heading='+84 849 630 412'
+          subheading='Contact me via phone or Zalo'
+          imgSrc='/phone.jpeg'
+          href='tel:'
         />
         {/* <Link
           heading='Facebook'
@@ -25,10 +25,10 @@ const Contact = () => {
           href='https://fb.com/SeNytera'
         /> */}
         <Link
-          heading="Github"
-          subheading="Check out my projects"
-          imgSrc="/email.webp"
-          href="https://github.com/SeNyterA"
+          heading='Github'
+          subheading='Check out my projects'
+          imgSrc='/email.webp'
+          href='https://github.com/SeNyterA'
         />
       </div>
       <video
@@ -36,88 +36,88 @@ const Contact = () => {
         loop
         muted
         playsInline
-        className="h-full w-full flex-1 rounded-3xl object-cover"
-        src="https://cdn.dribbble.com/userupload/9908185/file/original-db0555d341dd48b24ad15d7564f76175.mp4"
+        className='h-full w-full flex-1 rounded-3xl object-cover'
+        src='/contact.mp4'
       />
     </section>
-  );
-};
+  )
+}
 
 interface LinkProps {
-  heading: string;
-  imgSrc: string;
-  subheading: string;
-  href: string;
+  heading: string
+  imgSrc: string
+  subheading: string
+  href: string
 }
 
 const Link = ({ heading, imgSrc, subheading, href }: LinkProps) => {
-  const ref = useRef<HTMLAnchorElement | null>(null);
+  const ref = useRef<HTMLAnchorElement | null>(null)
 
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
 
-  const mouseXSpring = useSpring(x);
-  const mouseYSpring = useSpring(y);
+  const mouseXSpring = useSpring(x)
+  const mouseYSpring = useSpring(y)
 
-  const top = useTransform(mouseYSpring, [0.5, -0.5], ["40%", "60%"]);
-  const left = useTransform(mouseXSpring, [0.5, -0.5], ["60%", "70%"]);
+  const top = useTransform(mouseYSpring, [0.5, -0.5], ['40%', '60%'])
+  const left = useTransform(mouseXSpring, [0.5, -0.5], ['60%', '70%'])
 
   const handleMouseMove = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
-    const rect = ref.current!.getBoundingClientRect();
+    const rect = ref.current!.getBoundingClientRect()
 
-    const width = rect.width;
-    const height = rect.height;
+    const width = rect.width
+    const height = rect.height
 
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
 
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
+    const xPct = mouseX / width - 0.5
+    const yPct = mouseY / height - 0.5
 
-    x.set(xPct);
-    y.set(yPct);
-  };
+    x.set(xPct)
+    y.set(yPct)
+  }
 
   return (
     <motion.a
       href={href}
-      target="_blank"
+      target='_blank'
       ref={ref}
       onMouseMove={handleMouseMove}
-      initial="initial"
-      whileHover="whileHover"
-      className="group relative flex items-center justify-between border-0 border-solid border-gray-400 py-2 no-underline transition-colors duration-500 hover:border-gray-950"
+      initial='initial'
+      whileHover='whileHover'
+      className='group relative flex items-center justify-between border-0 border-solid border-gray-400 py-2 no-underline transition-colors duration-500 hover:border-gray-950'
     >
       <div>
         <motion.span
           variants={{
             initial: { x: 0 },
-            whileHover: { x: -16 },
+            whileHover: { x: -16 }
           }}
           transition={{
-            type: "spring",
+            type: 'spring',
             staggerChildren: 0.075,
-            delayChildren: 0.25,
+            delayChildren: 0.25
           }}
-          className="relative z-10 block text-3xl font-bold text-gray-500 transition-colors duration-500 group-hover:text-gray-950"
+          className='relative z-10 block text-3xl font-bold text-gray-500 transition-colors duration-500 group-hover:text-gray-950'
         >
-          {heading.split("").map((l, i) => (
+          {heading.split('').map((l, i) => (
             <motion.span
               variants={{
                 initial: { x: 0 },
-                whileHover: { x: 16 },
+                whileHover: { x: 16 }
               }}
-              transition={{ type: "spring" }}
-              className="inline-block"
+              transition={{ type: 'spring' }}
+              className='inline-block'
               key={i}
             >
               {l}
             </motion.span>
           ))}
         </motion.span>
-        <span className="relative z-10 mt-1 block text-base text-gray-500 transition-colors duration-500 group-hover:text-gray-950">
+        <span className='relative z-10 mt-1 block text-base text-gray-500 transition-colors duration-500 group-hover:text-gray-950'>
           {subheading}
         </span>
       </div>
@@ -126,37 +126,37 @@ const Link = ({ heading, imgSrc, subheading, href }: LinkProps) => {
         style={{
           top,
           left,
-          translateX: "-50%",
-          translateY: "-50%",
+          translateX: '-50%',
+          translateY: '-50%'
         }}
         variants={{
-          initial: { scale: 0, rotate: "-12.5deg" },
-          whileHover: { scale: 1, rotate: "12.5deg" },
+          initial: { scale: 0, rotate: '-12.5deg' },
+          whileHover: { scale: 1, rotate: '12.5deg' }
         }}
-        transition={{ type: "spring" }}
+        transition={{ type: 'spring' }}
         src={imgSrc}
-        className="absolute z-0 h-24 w-32 rounded-lg object-cover md:h-48 md:w-64"
+        className='absolute z-0 h-24 w-32 rounded-lg object-cover md:h-48 md:w-64'
         // alt={`Image representing a link for ${heading}`}
       />
 
       <motion.div
         variants={{
           initial: {
-            x: "25%",
-            opacity: 0,
+            x: '25%',
+            opacity: 0
           },
           whileHover: {
-            x: "0%",
-            opacity: 1,
-          },
+            x: '0%',
+            opacity: 1
+          }
         }}
-        transition={{ type: "spring" }}
-        className="relative z-10 p-4"
+        transition={{ type: 'spring' }}
+        className='relative z-10 p-4'
       >
-        <IconArrowRight className="text-5xl text-gray-950" />
+        <IconArrowRight className='text-5xl text-gray-950' />
       </motion.div>
     </motion.a>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact
