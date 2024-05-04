@@ -102,8 +102,8 @@ export default function Portfolio() {
                   {idx == 2 && <Contact />}
                 </motion.div>
               )
-            })}
-          </motion.div>
+              })}
+            </motion.div>
         </div>
 
         <motion.div

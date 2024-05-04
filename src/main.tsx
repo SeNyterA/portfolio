@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider } from 'react-router-dom'
 import './index.scss'
-import { routers } from './routers/routers.tsx'
+import Portfolio from './portfolio/Portfolio'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={routers} />
+    <Portfolio />
   </React.StrictMode>
 )
